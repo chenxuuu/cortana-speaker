@@ -8,6 +8,72 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBox Name="ReadTextTextBox" Text="将文字输入在这里即可朗读，换行可分段，此处文本不会自动保存，请注意备份。如有建议请在商店内回复。" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="5" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" AcceptsReturn="True" />
+
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="朗读声调频率（Hz）：" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,5,0"/>
+            <TextBlock Text="朗读速度：" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,5,0"/>
+            <TextBlock Text="朗读音量大小：" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,5,0"/>
+            <TextBlock Text="换行停顿时间（ms）：" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,5,0"/>
+
+            <TextBox Name="SpeakHzTextBox" Text="100" Grid.Row="0" Grid.Column="1" Margin="5,2,5,2"/>
+            <ComboBox Name="SpeakSpeedComboBox" Grid.Row="1" Grid.Column="1" Margin="5,0,5,0">
+                <ComboBoxItem Content="slow"/>
+                <ComboBoxItem Content="default" IsSelected="True"/>
+                <ComboBoxItem Content="fast"/>
+            </ComboBox>
+            <Slider Name="SpeakvolumeSlider" Maximum="100" Value="100" Grid.Row="2" Grid.Column="1" Margin="5,0,5,0" Width="120"/>
+            <TextBox Name="SpeakWaitTextBox" Text="此功能未实现" Grid.Row="3" Grid.Column="1" Margin="5,2,5,2"/>
+
+            <Button Content="朗读右侧文字" Click="Button_Click" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="2"/>
+        </Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Name="SpeakTextList1" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="2" TextWrapping="Wrap" Foreground="#FFC7C7C7" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Name="SpeakTextList2" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="2" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+            <TextBlock Name="SpeakTextList3" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="2" TextWrapping="Wrap" Foreground="#FFC7C7C7" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Name="SpeakTextList4" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="2" TextWrapping="Wrap" Foreground="#FFC7C7C7" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Button Name="PlayButton" Content="继续播放" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" Margin="0,2,0,2" Click="PlayButton_Click"/>
+            <Button Name="PlayOneButton" Content="播放下一句" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" Margin="0,2,0,2" Click="PlayOneButton_Click"/>
+            <Button Name="StopButton" Content="停止播放" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Center" Margin="0,2,0,2" Click="StopButton_Click"/>
+        </Grid>
+        
+            
+        <MediaElement x:Name="mediaElement" MediaEnded="mediaElement_MediaEnded"/>
     </Grid>
 </Page>
