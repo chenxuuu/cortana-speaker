@@ -6,6 +6,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Media.SpeechSynthesis;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,6 +28,13 @@ namespace Speaker
         public MainPage()
         {
             this.InitializeComponent();
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            {
+                StatusBar statusBar = StatusBar.GetForCurrentView();
+                statusBar.BackgroundColor = Color.FromArgb(255, 255, 255, 255);
+                statusBar.ForegroundColor = Color.FromArgb(255, 0, 0, 0);
+                statusBar.BackgroundOpacity = 1;
+            }//手机状态栏颜色
         }
 
         string[] ReadList;
