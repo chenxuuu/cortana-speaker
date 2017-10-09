@@ -128,7 +128,7 @@ namespace Speaker
 
         private async void SpeakWay(string value, int hz,string rate,int volume)
         {
-            string Ssml = $"<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'><prosody pitch='{hz}Hz' rate='{rate}' volume= '{volume}'>{value}</prosody></speak>";
+            string Ssml = $"<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='zh-CN'><prosody pitch='{hz}Hz' rate='{rate}' volume= '{volume}'>{value}</prosody></speak>";
             var stream = await _synth.SynthesizeSsmlToStreamAsync(Ssml);
 
             
