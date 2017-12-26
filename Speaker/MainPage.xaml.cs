@@ -35,6 +35,17 @@ namespace Speaker
                 statusBar.ForegroundColor = Color.FromArgb(255, 0, 0, 0);
                 statusBar.BackgroundOpacity = 1;
             }//手机状态栏颜色
+
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.XamlCompositionBrushBase"))
+            {
+                Windows.UI.Xaml.Media.AcrylicBrush myBrush = new Windows.UI.Xaml.Media.AcrylicBrush();
+                myBrush.BackgroundSource = Windows.UI.Xaml.Media.AcrylicBackgroundSource.HostBackdrop;
+                myBrush.TintColor = Color.FromArgb(255, 255, 255, 255);
+                myBrush.FallbackColor = Color.FromArgb(255, 255, 255, 255);
+                myBrush.TintOpacity = 0.1;
+                mainGrid.Background = myBrush;
+                ReadTextTextBox.Background = myBrush;
+            }
         }
 
         string[] ReadList;
